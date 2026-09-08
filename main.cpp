@@ -15,6 +15,22 @@ struct Map {
     bool isFoodEaten;
 };
 
+struct Position{
+    int x;
+    int y;
+};
+struct Snake{
+    Position snake[kW * kL];
+    int length;
+    int direction;
+};
+
+void initSnake(Snake* snake){
+    snake->length = 1;
+    snake->direction = 1;
+    snake->snake[0] = {kW / 2, kL / 2};
+}
+
 void initMap(Map* map){
     for(int i = 0; i < kW; i ++){
         for(int j = 0; j < kL; j ++){
@@ -55,8 +71,10 @@ void drawMap(Map* map){
 int main(){
 
     Map map;
+    Snake snake;
     initMap(&map);
     drawMap(&map);
+    initSnake(&snake);
 
 
     //Creating a main loop 
